@@ -165,14 +165,14 @@ function boot(){try{
   const FX=10.4,FZ=8.2,H=2.85,TW=0.12;
   B(scene,FX/2,-0.1,FZ/2,FX+0.3,0.1,FZ+0.3,matFloor);
   const rooms=[
-    {k:'living',n:'Кухня-гостиная',a:'21,4 м²',x0:0,z0:0,x1:4.95,z1:4.3},
-    {k:'master',n:'Спальня',a:'14,1 м²',x0:4.95,z0:0,x1:8.3,z1:4.3},
+    {k:'living',n:'Кухня-гостиная',a:'21,4 м²',x0:0,z0:0,x1:4.95,z1:4.7},
+    {k:'master',n:'Спальня',a:'14,1 м²',x0:4.95,z0:0,x1:8.3,z1:4.7},
     {k:'bath',n:'Ванная',a:'4,7 м²',x0:8.3,z0:0,x1:10.4,z1:2.25},
     {k:'ward',n:'Гардероб',a:'3,5 м²',x0:8.3,z0:2.25,x1:10.4,z1:3.95},
-    {k:'bed2',n:'Спальня',a:'10,8 м²',x0:0,z0:4.3,x1:3.2,z1:8.2},
-    {k:'hall',n:'Холл',a:'8,9 м²',x0:3.2,z0:4.3,x1:10.4,z1:6.3},
-    {k:'bath2',n:'Ванная',a:'3,4 м²',x0:3.8,z0:6.2,x1:5.5,z1:8.2},
-    {k:'wc',n:'Постирочная',a:'2,5 м²',x0:5.5,z0:6.4,x1:6.85,z1:8.2},
+    {k:'bed2',n:'Спальня',a:'10,8 м²',x0:0,z0:4.7,x1:2.7,z1:8.2},
+    {k:'hall',n:'Холл',a:'8,9 м²',x0:2.7,z0:4.7,x1:10.4,z1:6.3},
+    {k:'bath2',n:'Ванная',a:'3,4 м²',x0:3.3,z0:6.2,x1:5.0,z1:8.2},
+    {k:'wc',n:'Постирочная',a:'2,5 м²',x0:5.0,z0:6.4,x1:6.35,z1:8.2},
   ];
   rooms.forEach(r=>{const wet=(r.k==='bath'||r.k==='bath2'||r.k==='wc'||r.k==='hall');const yo=(r.k==='bath2'||r.k==='wc')?0.016:0.002;
     B(scene,(r.x0+r.x1)/2,yo,(r.z0+r.z1)/2,(r.x1-r.x0)-0.05,0.03,(r.z1-r.z0)-0.05,wet?matMicro:matFloor);});
@@ -216,25 +216,25 @@ function boot(){try{
 
   // perimeter
   buildWall(0,0,FX,0,[{c:1.4,w:1.7,type:'window'},{c:3.4,w:1.2,type:'window'},{c:6.6,w:1.9,type:'window'},{c:9.35,w:1.1,type:'window'}]);
-  buildWall(0,FZ,6.85,FZ,[]);
+  buildWall(0,FZ,6.35,FZ,[]);
   buildWall(0,0,0,FZ,[{c:2.0,w:1.6,type:'window'},{c:6.2,w:1.7,type:'window'}]);
   buildWall(FX,0,FX,6.3,[]);
   // interior
-  buildWall(4.95,0,4.95,4.3,[]);
-  buildWall(8.3,0,8.3,4.3,[{c:1.1,w:0.85,type:'door',oa:0.23},{c:3.4,w:0.8,type:'door'}]);
+  buildWall(4.95,0,4.95,4.7,[]);
+  buildWall(8.3,0,8.3,4.7,[{c:1.1,w:0.85,type:'door',oa:0.23},{c:3.4,w:0.8,type:'door'}]);
   buildWall(8.3,2.25,10.4,2.25,[]);
   buildWall(8.3,3.95,10.4,3.95,[]);
-  buildWall(0,4.3,3.2,4.3,[]);
-  buildWall(3.2,4.3,4.95,4.3,[{c:3.75,w:0.95,type:'opening'}]);     // проём в кухню; стена дотянута к холодильнику
-  buildWall(4.95,4.3,8.3,4.3,[{c:7.45,w:0.9,type:'door',sw:-1}]);   // дверь спальни 14,1 — в коридор (не в кресло)
-  buildWall(3.2,4.3,3.2,6.2,[{c:4.8,w:0.85,type:'door',sw:-1}]);    // спальня 10,8 / коридор
-  buildWall(3.2,6.2,3.8,6.2,[]);                                    // вход ниши шкафа
-  buildWall(3.8,6.2,3.8,FZ,[]);                                     // ниша спальни 10,8 / ванная 3,4
-  buildWall(3.8,6.2,5.5,6.2,[{c:4.65,w:0.75,type:'door'}]);         // ванная 3,4
-  buildWall(5.5,6.2,5.5,FZ,[]);
-  buildWall(5.5,6.4,6.85,6.4,[{c:6.0,w:0.7,type:'door'}]);          // постирочная 2,5
-  buildWall(6.85,6.4,6.85,FZ,[]);
-  buildWall(6.85,6.3,10.4,6.3,[{c:8.6,w:0.95,type:'door',leafMat:matGreen}]);   // вход в квартиру
+  buildWall(0,4.7,2.7,4.7,[]);
+  buildWall(2.7,4.7,4.95,4.7,[{c:3.75,w:0.95,type:'opening'}]);     // проём в кухню; стена дотянута к холодильнику
+  buildWall(4.95,4.7,8.3,4.7,[{c:7.45,w:0.9,type:'door',sw:-1}]);   // дверь спальни 14,1 — в коридор (не в кресло)
+  buildWall(2.7,4.7,2.7,6.2,[{c:5.2,w:0.85,type:'door',sw:-1}]);    // спальня 10,8 / коридор
+  buildWall(2.7,6.2,3.3,6.2,[]);                                    // вход ниши шкафа
+  buildWall(3.3,6.2,3.3,FZ,[]);                                     // ниша спальни 10,8 / ванная 3,4
+  buildWall(3.3,6.2,5.0,6.2,[{c:4.15,w:0.75,type:'door'}]);         // ванная 3,4
+  buildWall(5.0,6.2,5.0,FZ,[]);
+  buildWall(5.0,6.4,6.35,6.4,[{c:5.5,w:0.7,type:'door'}]);          // постирочная 2,5
+  buildWall(6.35,6.4,6.35,FZ,[]);
+  buildWall(6.35,6.3,10.4,6.3,[{c:8.6,w:0.95,type:'door',leafMat:matGreen}]);   // вход в квартиру
 
   // ================= FURNITURE BUILDERS (local origin = footprint centre on floor) =================
   function fSofa(x,z,ry){const g=grp(x,z,ry);// faces +z; 2.3 wide x, 0.95 deep
@@ -296,14 +296,14 @@ function boot(){try{
   // ================= PLACEMENT =================
   // --- KITCHEN: continuous run flush to partition x=4.95 (no floating parts) ---
   (function(){const xb=4.59;                                  // back face at 4.89 (flush to wall)
-    B(scene,xb,0,1.6,0.6,0.86,2.9,matGreen);                  // base run z0.15..3.05
-    B(scene,xb,0.86,1.5,0.62,0.05,3.0,matMarble);             // worktop reaches north wall (z0..3.0)
-    B(scene,xb+0.13,1.46,2.4,0.34,0.6,1.3,matLinenW);         // upper cabinets
-    B(scene,xb,0.88,0.7,0.5,0.02,0.5,matSteel);               // cooktop near north
-    [[-.12,-.12],[.12,-.12],[-.12,.12],[.12,.12]].forEach(p=>C(scene,xb+p[0],0.9,0.7+p[1],0.05,0.05,0.02,matDark));
-    B(scene,xb+0.13,1.5,0.7,0.34,0.5,0.5,matSteel);           // hood over cooktop
-    C(scene,xb,0.91,2.3,0.16,0.16,0.04,matSteel);C(scene,xb,1.0,2.15,0.016,0.016,0.3,matBrass); // sink+faucet
-    B(scene,xb,0,3.5,0.62,1.98,0.6,matSteel);                 // tall fridge — SEPARATE block (z3.2..3.8)
+    B(scene,xb,0,0.4,0.62,1.98,0.6,matSteel);                 // холодильник У ОКНА (северный край, z0.1..0.7)
+    B(scene,xb,0,2.325,0.6,0.86,2.95,matGreen);              // base run z0.85..3.8 (продлён)
+    B(scene,xb,0.86,2.325,0.62,0.05,2.95,matMarble);         // worktop (продлён до места холодильника)
+    B(scene,xb+0.13,1.46,2.5,0.34,0.6,1.1,matLinenW);         // upper cabinets
+    B(scene,xb,0.88,1.4,0.5,0.02,0.5,matSteel);               // cooktop
+    [[-.12,-.12],[.12,-.12],[-.12,.12],[.12,.12]].forEach(p=>C(scene,xb+p[0],0.9,1.4+p[1],0.05,0.05,0.02,matDark));
+    B(scene,xb+0.13,1.5,1.4,0.34,0.5,0.5,matSteel);           // hood over cooktop
+    C(scene,xb,0.91,2.6,0.16,0.16,0.04,matSteel);C(scene,xb,1.0,2.45,0.016,0.016,0.3,matBrass); // sink+faucet
   })();
   // dining table near windows; chairs spaced around the perimeter, facing the table
   fTable(1.45,1.05,0);
@@ -314,7 +314,7 @@ function boot(){try{
   B(scene,1.95,0.4,3.35,1.0,0.04,0.5,matWood);               // coffee table top
   [[-0.42,-0.2],[0.42,-0.2],[-0.42,0.2],[0.42,0.2]].forEach(p=>B(scene,1.95+p[0],0,3.35+p[1],0.05,0.4,0.05,matWoodD));
   C(scene,1.8,0.44,3.35,0.05,0.05,0.12,matGz);
-  fMedia(1.55,4.06,PI);                                       // flush to south wall, faces north
+  fMedia(1.55,4.46,PI);                                       // flush to south wall, faces north
   fRug(1.95,2.95,2.8,2.2);
   fPlant(0.45,0.5); fPlant(0.4,3.1);
   fArt(0.07,3.6,PI/2,1.1,0.85);
@@ -345,11 +345,11 @@ function boot(){try{
   // --- BEDROOM 2: bed along south wall (head west); desk on north wall; wardrobe in NICHE on east wall ---
   fBed(1.13,7.42,PI/2,1.4,2.0);
   fNight(0.4,6.4,0);
-  fDesk(0.95,4.62,0); fChair(0.95,5.18,PI); B(scene,0.95,1.1,4.4,0.6,0.5,0.04,matGlass); // desk + mirror
-  B(scene,0.95,0.78,4.52,0.46,0.3,0.03,matDark); B(scene,0.95,0.74,4.52,0.16,0.04,0.1,matDark); // monitor
-  C(scene,1.32,0.74,4.45,0.02,0.02,0.32,matBrass); C(scene,1.32,0.9,4.55,0.02,0.02,0.18,matBrass); S(scene,1.32,1.06,4.6,0.05,matBulb); // lamp
-  B(scene,3.5,0.002,7.1,0.58,0.03,1.9,matFloor);              // пол ниши
-  fWardrobe(3.46,7.1,-PI/2,1.7,0.55);                         // шкаф ВНУТРИ ниши, дверцы в комнату
+  fDesk(0.95,5.02,0); fChair(0.95,5.58,PI); B(scene,0.95,1.1,4.8,0.6,0.5,0.04,matGlass); // desk + mirror
+  B(scene,0.95,0.78,4.92,0.46,0.3,0.03,matDark); B(scene,0.95,0.74,4.92,0.16,0.04,0.1,matDark); // monitor
+  C(scene,1.32,0.74,4.85,0.02,0.02,0.32,matBrass); C(scene,1.32,0.9,4.95,0.02,0.02,0.18,matBrass); S(scene,1.32,1.06,5.0,0.05,matBulb); // lamp
+  B(scene,3.0,0.002,7.1,0.58,0.03,1.9,matFloor);              // пол ниши
+  fWardrobe(2.96,7.1,-PI/2,1.7,0.55);                         // шкаф ВНУТРИ ниши, дверцы в комнату
   fRug(1.2,6.55,1.8,2.1);
   fArt(0.07,4.8,PI/2,0.9,0.7,matArt3); fPlant(0.4,6.0);
   pt(1.3,2.3,6.4,0.4); fSpot(1.0,5.0);
@@ -361,17 +361,17 @@ function boot(){try{
   pt(6.0,2.6,5.0,0.3); pt(9.6,2.6,5.4,0.26);
 
   // --- BATH 2 = Ванная (tub + sink + toilet), shifted +0.6 ---
-  fBathtub(4.65,7.76,0,1.5);
-  fSink(4.06,6.7,PI/2);
-  fToilet(5.14,7.0,-PI/2);
-  B(scene,4.65,0,8.11,1.6,2.4,0.05,matGz);                    // гжель ровно по стене за ванной
-  pt(4.6,2.3,7.0,0.3);
+  fBathtub(4.15,7.76,0,1.5);
+  fSink(3.56,6.7,PI/2);
+  fToilet(4.64,7.0,-PI/2);
+  B(scene,4.15,0,8.11,1.6,2.4,0.05,matGz);                    // гжель ровно по стене за ванной
+  pt(4.1,2.3,7.0,0.3);
 
   // --- WC = Постирочная (washer + storage), shifted +0.6 ---
-  fWasher(5.9,7.84,0);
-  fWardrobe(6.52,7.0,-PI/2,1.2,0.55);
-  B(scene,5.53,0,7.0,0.05,1.0,0.5,matGz);
-  pt(6.1,2.3,7.0,0.25);
+  fWasher(5.4,7.84,0);
+  fWardrobe(6.02,7.0,-PI/2,1.2,0.55);
+  B(scene,5.03,0,7.0,0.05,1.0,0.5,matGz);
+  pt(5.6,2.3,7.0,0.25);
 
   // ---------- labels ----------
   const labels=[];
